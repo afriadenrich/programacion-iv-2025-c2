@@ -1,0 +1,21 @@
+<h1>Clase 01 - Bindeos</h1>
+<!-- Texto -->
+<p>
+  {{ nombre }}
+</p>
+<p>
+  {{ contador }}
+</p>
+
+<!-- Atributos-->
+<a [href]="link" target="_blank">Google</a>
+
+<div [style]="estilo"></div>
+
+<!-- Eventos -->
+<button (click)="contar()">Contar</button>
+
+<!-- Doble -->
+<input [(ngModel)]="nombre" />
+
+<button (click)="borrar()">Borrar</button>
