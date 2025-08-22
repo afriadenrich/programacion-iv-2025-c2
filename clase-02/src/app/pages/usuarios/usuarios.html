@@ -1,1 +1,27 @@
 <p>usuarios works!</p>
+
+<!-- if / else - for - switch -->
+
+<p>El usuario actual es {{ usuarioActual }}</p>
+
+<p>Hay {{ usuarios.length }} usuarios</p>
+
+@if (usuarios.length > 2 ) {
+<p>Hay más de 2 usuarios.</p>
+} @else {
+<p>Hay pocos usuarios.</p>
+}
+
+<p>
+  {{ usuarios.length > 2 ? 'Hay muchos' : 'Hay pocos ' }}
+</p>
+
+<!-- <div *ngIf="usuarios.length > 2">
+  <p>Hay más de 2 usuarios.</p>
+</div> -->
+
+@for (usr of usuarios; track usr.nombre; let i = $index) {
+<div>
+  <p>{{ i + 1 }} - {{ usr.perfil }} {{ usr.nombre }}</p>
+</div>
+}
