@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { ListadoAlumnos } from '../../components/listado-alumnos/listado-alumnos';
+import { Listado } from '../../components/listado/listado';
+import { Persona } from '../../classes/persona';
 
 @Component({
   selector: 'app-profesores',
-  imports: [ListadoAlumnos],
+  imports: [Listado],
   templateUrl: './profesores.html',
   styleUrl: './profesores.css',
 })
 export class Profesores {
-  profesores = [
+  profesores: Persona[] = [
     {
       nombre: 'AAA',
       apellido: 'BBB',

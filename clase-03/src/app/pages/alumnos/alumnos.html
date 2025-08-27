@@ -1,10 +1,10 @@
 <section class="container">
   <h1>Alumnos Div 341</h1>
   <hr />
-  <app-listado-alumnos [listadoHijo]="listado"></app-listado-alumnos>
+  <app-listado [listadoHijo]="listado"></app-listado>
 
   <hr />
-  <app-agregar-alumnos></app-agregar-alumnos>
+  <app-agregar-alumnos (envioDeAlumno)="this.agregarAlArrayEnElPadre($event)"></app-agregar-alumnos>
 
   <app-detalle-alumnos></app-detalle-alumnos>
 </section>

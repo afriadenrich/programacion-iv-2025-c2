@@ -1,21 +1,18 @@
 import { Component } from '@angular/core';
-import { ListadoAlumnos } from '../../components/listado-alumnos/listado-alumnos';
+import { Listado } from '../../components/listado/listado';
 import { AgregarAlumnos } from '../../components/agregar-alumnos/agregar-alumnos';
 import { DetalleAlumnos } from '../../components/detalle-alumnos/detalle-alumnos';
+import { Persona } from '../../classes/persona';
 
 @Component({
   selector: 'app-alumnos',
-  imports: [ListadoAlumnos, AgregarAlumnos, DetalleAlumnos],
+  imports: [Listado, AgregarAlumnos, DetalleAlumnos],
   templateUrl: './alumnos.html',
   styleUrl: './alumnos.css',
 })
 export class Alumnos {
-  listado = [
-    {
-      nombre: 'A',
-      apellido: 'B',
-      legajo: 123,
-    },
+  listado: Persona[] = [
+    new Persona(123, 'A', 'B'),
     {
       nombre: 'A',
       apellido: 'D',
@@ -37,4 +34,8 @@ export class Alumnos {
       legajo: 222,
     },
   ];
+
+  agregarAlArrayEnElPadre(persona: Persona) {
+    this.listado.push(persona);
+  }
 }
