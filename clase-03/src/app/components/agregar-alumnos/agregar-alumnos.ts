@@ -1,10 +1,11 @@
 import { Component, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Persona } from '../../classes/persona';
+import { Boton } from '../boton/boton';
 
 @Component({
   selector: 'app-agregar-alumnos',
-  imports: [FormsModule],
+  imports: [FormsModule, Boton],
   templateUrl: './agregar-alumnos.html',
   styleUrl: './agregar-alumnos.css',
 })

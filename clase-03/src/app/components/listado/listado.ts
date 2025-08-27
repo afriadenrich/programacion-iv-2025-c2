@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Persona } from '../../classes/persona';
 
 @Component({
@@ -10,6 +10,12 @@ import { Persona } from '../../classes/persona';
 export class Listado {
   /* input -> Entrada -> recibir datos desde un componente padre */
   listadoHijo = input<Persona[]>([]);
+  envioDeAlumno = output<Persona>();
+
+  verDetalle(alumno: Persona) {
+    this.envioDeAlumno.emit(alumno);
+  }
+
   alumno: IAlumno = {
     nombre: 'A',
     apellido: 'B',

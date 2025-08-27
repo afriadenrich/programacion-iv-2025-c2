@@ -35,6 +35,12 @@ export class Alumnos {
     },
   ];
 
+  alumno: Persona | null = null;
+
+  verDetalleFinal(alumno: Persona) {
+    this.alumno = alumno;
+  }
+
   agregarAlArrayEnElPadre(persona: Persona) {
     this.listado.push(persona);
   }
