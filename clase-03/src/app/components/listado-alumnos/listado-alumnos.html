@@ -1,1 +1,20 @@
-<p>listado-alumnos works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>Legajo</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(al of listadoHijo(); track $index) {
+    <tr>
+      <td>{{ al.legajo }}</td>
+      <td>{{ al.nombre }}</td>
+      <td>{{ al.apellido }}</td>
+      <td><button class="btn btn-info">Ver detalle</button></td>
+    </tr>
+    }
+  </tbody>
+</table>
