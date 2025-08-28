@@ -59,11 +59,7 @@ export class Registro {
       return error;
     }
 
-    if (!this.formulario) {
-      return error;
-    }
-
-    const contrasenia = this.formulario.get('contrasenia')?.value;
+    const contrasenia = control.parent?.get('contrasenia')?.value;
 
     if (!contrasenia) {
       return error;
