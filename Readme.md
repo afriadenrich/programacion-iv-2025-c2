@@ -37,9 +37,7 @@ Este cuatrimestre utilizamos la versión: *19.2.5* de Angular
 - [@switch](https://angular.dev/api/core/@switch)
 - [NG Bootstrap](https://ng-bootstrap.github.io/#/home)
 
-
-
-## Clase 03 - 28/08/2025
+## Clase 03 - 27/08/2025
 
 ### Input y Output - Servicios - HTTPClient
 
@@ -52,3 +50,4 @@ Este cuatrimestre utilizamos la versión: *19.2.5* de Angular
 - [HTTPCLient](https://angular.dev/guide/http)
 - [SetUp HTTPClient](https://angular.dev/guide/http/setup)
 - [Peticiones](https://angular.dev/guide/http/making-requests)
+- [Signals](https://angular.dev/guide/signals)
