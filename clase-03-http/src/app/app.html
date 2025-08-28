@@ -1,0 +1,26 @@
+<div class="card m-auto mt-5" style="width: 18rem;">
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">❤️</span>
+    <input type="text" class="form-control" placeholder="nombre pokemon" aria-describedby="basic-addon1"
+      [(ngModel)]="nombre">
+  </div>
+
+  @if(this.apiService.pokemonActual()){
+  <img [src]="this.apiService.pokemonActual().sprites.front_default" class="card-img-top" alt="">
+
+
+  <div class="card-body">
+    <h5 class="card-title">{{this.apiService.pokemonActual().name}}</h5>
+    <p class="card-text">
+      @for(ab of this.apiService.pokemonActual().abilities; track $index){
+      - {{ab.ability.name}} <br />
+      }
+    </p>
+
+  </div>
+  }
+  <button class="btn btn-primary text-center" (click)="traer()">Traer</button>
+
+</div>
+<router-outlet />

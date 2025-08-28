@@ -37,3 +37,18 @@ Este cuatrimestre utilizamos la versión: *19.2.5* de Angular
 - [@switch](https://angular.dev/api/core/@switch)
 - [NG Bootstrap](https://ng-bootstrap.github.io/#/home)
 
+
+
+## Clase 03 - 28/08/2025
+
+### Input y Output - Servicios - HTTPClient
+
+## Documentación Clase 03
+
+- [Input](https://angular.dev/guide/components/inputs)
+- [Output](https://angular.dev/guide/components/outputs)
+- [Servicios injectables](https://angular.dev/guide/di/dependency-injection)
+- [Creación de servicios](https://angular.dev/guide/di/creating-injectable-service)
+- [HTTPCLient](https://angular.dev/guide/http)
+- [SetUp HTTPClient](https://angular.dev/guide/http/setup)
+- [Peticiones](https://angular.dev/guide/http/making-requests)
