@@ -1,1 +1,70 @@
-<p>registro works!</p>
+<h1>Registro</h1>
+<hr />
+
+<!-- VERSIÓN CON FORM GROUP-->
+<form class="card" [formGroup]="formulario">
+  <div class="card-body">
+    <div class="mb-1">
+      <label for="nombre">Nombre: </label>
+      <input type="text" name="nombre" id="nombre" formControlName="nombre" />
+    </div>
+    <div class="mb-1">
+      <label for="apellido">Apellido: </label>
+      <input type="text" name="apellido" id="apellido" formControlName="apellido" />
+    </div>
+    <div class="mb-1">
+      <label for="correo">Correo: </label>
+      <input type="email" name="correo" id="correo" formControlName="correo" />
+    </div>
+    <div class="mb-1">
+      <label for="contrasenia">Contraseña: </label>
+      <input type="text" name="contrasenia" id="contrasenia" formControlName="contrasenia" />
+    </div>
+    <div class="mb-1">
+      <label for="repetirContrasenia">Repetir Contraseña: </label>
+      <input
+        type="text"
+        name="repetirContrasenia"
+        id="repetirContrasenia"
+        formControlName="repetirContrasenia"
+      />
+    </div>
+  </div>
+</form>
+
+<!--
+    VERSIÓN CON SOLO FORM CONTROLS
+
+<form class="card">
+  <div class="card-body">
+    <div class="mb-1">
+      <label for="nombre">Nombre: </label>
+      <input type="text" name="nombre" id="nombre" [formControl]="nombre" />
+    </div>
+    <div class="mb-1">
+      <label for="apellido">Apellido: </label>
+      <input type="text" name="apellido" id="apellido" [formControl]="apellido" />
+    </div>
+    <div class="mb-1">
+      <label for="correo">Correo: </label>
+      <input type="email" name="correo" id="correo" [formControl]="correo" />
+    </div>
+    <div class="mb-1">
+      <label for="contrasenia">Contraseña: </label>
+      <input type="text" name="contrasenia" id="contrasenia" [formControl]="contrasenia" />
+    </div>
+    <div class="mb-1">
+      <label for="repetirContrasenia">Repetir Contraseña: </label>
+      <input
+        type="text"
+        name="repetirContrasenia"
+        id="repetirContrasenia"
+        [formControl]="repetirContrasenia"
+      />
+    </div>
+  </div>
+</form> -->
+
+<p>
+  {{ nombre.value }}
+</p>
