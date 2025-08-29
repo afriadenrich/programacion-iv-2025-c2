@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, SimpleChanges } from '@angular/core';
 import { CardTutorialType } from '../../classes/card-tutorial';
 import { RouterLink } from '@angular/router';
 
@@ -10,4 +10,10 @@ import { RouterLink } from '@angular/router';
 })
 export class Card {
   card = input<CardTutorialType>();
+
+  ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    console.log(changes);
+  }
 }

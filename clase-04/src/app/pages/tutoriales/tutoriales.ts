@@ -30,4 +30,14 @@ export class Tutoriales {
     textoUrl: 'utn',
     url: '/',
   };
+
+  cambiarTutorial1() {
+    this.card1 = {
+      titulo: 'Algo88',
+      desc: 'Texto88',
+      imagen: 'https://upload.wikimedia.org/wikipedia/commons/6/67/UTN_logo.jpg',
+      textoUrl: 'utn',
+      url: '/',
+    };
+  }
 }

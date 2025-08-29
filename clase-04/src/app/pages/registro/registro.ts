@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   AbstractControl,
@@ -41,10 +42,21 @@ export class Registro {
     ]),
   });
 
-  login = new FormGroup({
-    correo: new FormControl(''),
-    contrasenia: new FormControl(''),
-  });
+  ngOnInit() {
+    this.formulario.valueChanges.subscribe((value) => {
+      console.log(value);
+      console.log(this.formulario.controls);
+    });
+
+    this.formulario.statusChanges.subscribe((formControlStatus) => {
+      console.log(formControlStatus);
+    });
+  }
+
+  // login = new FormGroup({
+  //   correo: new FormControl(''),
+  //   contrasenia: new FormControl(''),
+  // });
 
   enviarFormulario() {
     console.log(this.formulario);
@@ -70,5 +82,9 @@ export class Registro {
     } else {
       return error;
     }
+  }
+
+  get apellido() {
+    return this.formulario.get('apellido');
   }
 }

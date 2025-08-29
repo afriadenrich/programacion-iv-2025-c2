@@ -1,4 +1,8 @@
 <p>tutoriales works!</p>
-<app-card [card]="card1"></app-card>
-<app-card [card]="card2"></app-card>
-<app-card [card]="card3"></app-card>
+<div class="d-flex">
+  <app-card [card]="card1"></app-card>
+  <app-card [card]="card2"></app-card>
+  <app-card [card]="card3"></app-card>
+</div>
+
+<button (click)="cambiarTutorial1()">Cambiar #1</button>

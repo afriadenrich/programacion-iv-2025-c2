@@ -8,10 +8,20 @@
       <div class="mb-1">
         <label for="nombre">Nombre: </label>
         <input class="ms-1" type="text" name="nombre" id="nombre" formControlName="nombre" />
+        @if(nombre.errors?.["required"] && nombre.touched){
+        <small class="error">El campo nombre es requerido</small>
+        } @if(nombre.errors?.["minlength"] && nombre.touched){
+        <small class="error"
+          >El largo minimo es de {{ nombre.errors?.["minlength"].requiredLength }}</small
+        >
+        }
       </div>
       <div class="mb-1">
         <label for="apellido">Apellido: </label>
         <input class="ms-1" type="text" name="apellido" id="apellido" formControlName="apellido" />
+        @if(apellido?.errors?.["required"] && apellido?.touched){
+        <small class="error">El campo apellido es requerido</small>
+        }
       </div>
       <div class="mb-1">
         <label for="correo">Correo: </label>
