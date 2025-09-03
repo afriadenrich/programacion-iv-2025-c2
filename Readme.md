@@ -12,8 +12,6 @@ Este cuatrimestre utilizamos la versión: *19.2.5* de Angular
 -   Rutas simples
 -   Navegación
 
-## Documentación Clase 01
-
 - [Introducción Angular](https://angular.dev/)
 - [Instalación](https://angular.dev/installation)
 - [Componentes](https://angular.dev/guide/components)
@@ -28,8 +26,6 @@ Este cuatrimestre utilizamos la versión: *19.2.5* de Angular
 
 ### Ruteo 2 - Ciclo de vida del componente - Directivas estructurales
 
-## Documentación Clase 02
-
 - [Hooks de Ciclo de vida](https://angular.dev/guide/components/lifecycle)
 - [Lazy loading](https://angular.dev/guide/routing/define-routes#lazily-loaded-components)
 - [@if](https://angular.dev/api/core/@if)
@@ -41,8 +37,6 @@ Este cuatrimestre utilizamos la versión: *19.2.5* de Angular
 
 ### Input y Output - Servicios - HTTPClient
 
-## Documentación Clase 03
-
 - [Input](https://angular.dev/guide/components/inputs)
 - [Output](https://angular.dev/guide/components/outputs)
 - [Servicios injectables](https://angular.dev/guide/di/dependency-injection)
@@ -51,3 +45,15 @@ Este cuatrimestre utilizamos la versión: *19.2.5* de Angular
 - [SetUp HTTPClient](https://angular.dev/guide/http/setup)
 - [Peticiones](https://angular.dev/guide/http/making-requests)
 - [Signals](https://angular.dev/guide/signals)
+
+## Clase 04 - 28/08/2025
+
+### Formularios
+
+## Clase 05 - 03/09/2025
+
+### Supabase Auth - Deploy
+
+## Clase 06 - 04/09/2025
+
+### Supabase DB - Algo de Ionic
