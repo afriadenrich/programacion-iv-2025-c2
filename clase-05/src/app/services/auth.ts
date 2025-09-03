@@ -15,13 +15,38 @@ export class Auth {
     this.supabase = createClient(this.url, this.key);
   }
 
-  iniciarSesion(email: string, password: string) {}
-
-  crearCuenta(email: string, password: string) {
-    this.supabase.auth.signUp({ email: email, password: password });
+  async iniciarSesion(email: string, password: string) {
+    const respuesta = await this.supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+    if (respuesta.error) {
+      console.log(respuesta.error);
+      return;
+    }
+    console.log(respuesta.data);
   }
 
-  cerrarSesion() {}
+  async crearCuenta(email: string, password: string) {
+    const respuesta = await this.supabase.auth.signUp({
+      email: email,
+      password: password,
+      options: {
+        data: {
+          algo: 'Ejemplo',
+        },
+      },
+    });
+    if (respuesta.error) {
+      console.log(respuesta.error);
+      return;
+    }
+    console.log(respuesta.data);
+  }
+
+  cerrarSesion() {
+    this.supabase.auth.signOut();
+  }
 }
 
 // Sesiones
