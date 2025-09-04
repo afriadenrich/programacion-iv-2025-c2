@@ -3,6 +3,9 @@
   <button>Juegos</button>
   <button>Quién Soy</button>
   <button (click)="cerrarSesion()">Cerrar Sesión</button>
+  <div class="ms-2">
+    <p>{{ authService.usuarioActual()?.email }}</p>
+  </div>
   } @else {
   <button>Registro</button>
   <button>Inicio de sesión</button>
