@@ -13,13 +13,21 @@ export class App {
   email = '';
   password = '';
 
-  authService = inject(Auth);
+  protected authService = inject(Auth);
 
-  // constructor(private authService: Auth){
+  // constructor(protected authService: Auth){
 
   // }
 
   crearCuenta() {
     this.authService.crearCuenta(this.email, this.password);
+  }
+
+  iniciarSesion() {
+    this.authService.iniciarSesion(this.email, this.password);
+  }
+
+  cerrarSesion() {
+    this.authService.cerrarSesion();
   }
 }
