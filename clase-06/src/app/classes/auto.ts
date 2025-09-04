@@ -5,4 +5,5 @@ export class Auto {
   precio?: number;
   disponible?: boolean;
   created_at?: any;
+  id_garage?: number;
 }
