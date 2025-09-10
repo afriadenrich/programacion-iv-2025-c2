@@ -1,0 +1,12 @@
+<input [(ngModel)]="usuario" placeholder="usuario" />
+
+<hr />
+
+@for (msj of mensajes(); track $index) {
+<div>
+  <p>{{ msj.created_at }} - {{ msj.usuario }} - {{ msj.mensaje }}</p>
+</div>
+}
+
+<input [(ngModel)]="msj" placeholder="mensaje" />
+<button (click)="enviarMensaje()">Enviar</button>
