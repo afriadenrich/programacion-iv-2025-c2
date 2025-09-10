@@ -57,3 +57,8 @@ Este cuatrimestre utilizamos la versión: *19.2.5* de Angular
 ## Clase 06 - 04/09/2025
 
 ### Supabase DB - Algo de Ionic
+
+## Clase 07 - 10/09/2025
+
+### Supabase Realtime - Guards
+
