@@ -2,9 +2,11 @@ import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Login } from './pages/login/login';
 import { Registro } from './pages/registro/registro';
-import { Juegos } from './pages/juegos/juegos';
 import { Admin } from './pages/admin/admin';
 import { Error } from './pages/error/error';
+import { estaLogueadoGuard } from './guards/esta-logueado-guard';
+import { puedoSalirDelLoginYRegistroGuard } from './guards/puedo-salir-del-login-yregistro-guard';
+import { noEstaLogueadoGuard } from './guards/no-esta-logueado-guard';
 
 export const routes: Routes = [
   {
@@ -14,14 +16,20 @@ export const routes: Routes = [
   {
     path: 'login',
     component: Login,
+    canDeactivate: [puedoSalirDelLoginYRegistroGuard],
+    canActivate: [noEstaLogueadoGuard],
   },
   {
     path: 'registro',
     component: Registro,
+    canDeactivate: [puedoSalirDelLoginYRegistroGuard],
+    canActivate: [noEstaLogueadoGuard],
   },
   {
     path: 'juegos',
-    component: Juegos,
+    // component: Juegos,
+    loadComponent: () => import('./pages/juegos/juegos').then((arch) => arch.Juegos),
+    canActivate: [estaLogueadoGuard],
   },
   {
     path: 'admin',

@@ -2,7 +2,9 @@
   <button routerLink="">Home</button>
   <button routerLink="login">Login</button>
   <button routerLink="registro">Registro</button>
+  @if(this.auth.user){
   <button routerLink="juegos">Juegos</button>
+  }
   <button routerLink="admin">Admin</button>
   <button routerLink="error">Error</button>
 </nav>
