@@ -1,0 +1,21 @@
+<nav>
+  <button routerLink="">Home</button>
+  <button routerLink="login">Login</button>
+  <button routerLink="registro">Registro</button>
+  <button routerLink="juegos">Juegos</button>
+  <button routerLink="admin">Admin</button>
+  <button routerLink="error">Error</button>
+</nav>
+
+<div>
+  <button (click)="this.auth.cambiarUsuario()">Cambiar usuario</button>
+  <button (click)="this.auth.cambiarAdmin()">Cambiar admin</button>
+</div>
+
+<div>
+  <h1>Estado:</h1>
+  <p>El usuario es: {{ this.auth.user ? this.auth.user.nombre : 'No hay usuario' }}</p>
+  <p>¿Es admin? {{ this.auth.admin ? 'Si' : 'No' }}</p>
+</div>
+
+<router-outlet />
