@@ -1,0 +1,48 @@
+<h1>Pipes</h1>
+
+<p>
+  {{ nombre | titlecase }}
+</p>
+<p>
+  {{ nombre | uppercase }}
+</p>
+
+<!-- Documentación: {{ value_expression | date:format:timezone:locale }} -->
+<!-- Internamente: transform(value_expression, format, timezone, locale)-->
+<p>
+  {{ fecha | date : formato_fecha }}
+</p>
+<p>
+  {{ fecha | date }}
+</p>
+<p>
+  {{ numero | currency : 'USD' : 'symbol' }}
+</p>
+<p>
+  {{ numero | number : '8.2-6' }}
+</p>
+<p>
+  {{ persona | json }}
+</p>
+
+<p>{{ nombre | textoLargo : 30 : '... ver más' }}</p>
+
+<p>{{ '2025/08/12 15:40:00' | fecha }}</p>
+
+<h1>Directivas</h1>
+
+<div [ngClass]="isSpecial ? 'special' : ''">This div is special</div>
+
+<div [ngClass]="currentClasses">2 clases</div>
+
+<div style="height: 100px; width: 200px"></div>
+
+<p appHighlight>Hola mundo</p>
+<p appHighlight color="#0000ff">Hola mundo</p>
+<h1 appHighlight [color]="verde">Hola mundo</h1>
+<div appHighlight>Hola mundo</div>
+
+<hr />
+<button routerLink="registro">Registro</button>
+<button routerLink="login">Login</button>
+<router-outlet></router-outlet>
