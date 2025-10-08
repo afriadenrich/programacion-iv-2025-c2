@@ -1,0 +1,18 @@
+<input id="nuevaTarea" [(ngModel)]="nuevaTarea" />
+<button (click)="agregarTarea()" id="agregar">Agregar</button>
+{{ nuevaTarea }}
+
+<div class="mt-5">
+  <ul>
+    @for (item of tareas(); track $index) {
+    <li>
+      {{ item.texto }}
+      <input
+        type="checkbox"
+        [checked]="item.completado"
+        (click)="item.completado = !item.completado"
+      />
+    </li>
+    }
+  </ul>
+</div>
