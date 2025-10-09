@@ -8,5 +8,8 @@ export class CreateLibroDto {
 
   /* eslint-disable-next-line @typescript-eslint/no-unsafe-call */
   @IsString()
-  titulo: string;
+  autor: string;
 }
+
+// @IsEmail()
+// @Is

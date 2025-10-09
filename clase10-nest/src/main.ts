@@ -9,7 +9,7 @@ async function bootstrap() {
 
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true,
+      whitelist: true, // Lista blanca -> Solo pasa si está en la lista -> Solo pasa si está declarado
     }),
   );
 
