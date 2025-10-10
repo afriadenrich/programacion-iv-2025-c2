@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { type ObjectId } from 'mongoose';
+import { Sonido } from '../dto/create-instrumento.dto';
 
 @Schema()
 export class Instrumento {
@@ -19,7 +20,7 @@ export class Instrumento {
   partituras: string[];
 
   @Prop({ type: mongoose.Schema.Types.Mixed })
-  sondios: { nombre: string; frecuencia: number };
+  sonidos: Sonido;
 
   @Prop({ default: new Date() })
   created_at: Date;

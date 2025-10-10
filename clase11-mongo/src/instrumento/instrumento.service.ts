@@ -1,4 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  InternalServerErrorException,
+  NotImplementedException,
+} from '@nestjs/common';
 import { CreateInstrumentoDto } from './dto/create-instrumento.dto';
 import { UpdateInstrumentoDto } from './dto/update-instrumento.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -12,6 +18,7 @@ export class InstrumentoService {
   ) {}
 
   async create(createInstrumentoDto: CreateInstrumentoDto) {
+    console.log(createInstrumentoDto);
     const documento = new this.instModel(createInstrumentoDto);
 
     const guardado = await documento.save();
@@ -19,20 +26,63 @@ export class InstrumentoService {
     return guardado;
   }
 
-  findAll() {
-    return `This action returns all instrumento`;
+  async findAll() {
+    const todos = await this.instModel.find();
+
+    return todos;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} instrumento`;
+  async findOne(id: string) {
+    try {
+      const resultado = await this.instModel.findById(id);
+      return resultado;
+    } catch (error) {
+      // throw new HttpException(
+      //   'No se encuentra el instrumento',
+      //   HttpStatus.NOT_FOUND,
+      //   {
+      //     cause: 'Mandaste mal el id',
+      //     description: 'Más detallada del error',
+      //   },
+      // );
+
+      throw new HttpException({}, HttpStatus.FORBIDDEN, {
+        cause: error,
+      });
+    }
   }
 
-  update(id: number, updateInstrumentoDto: UpdateInstrumentoDto) {
+  async update(id: string, updateInstrumentoDto: UpdateInstrumentoDto) {
     console.log(updateInstrumentoDto);
-    return `This action updates a #${id} instrumento`;
+    const resultado = await this.instModel.updateOne(
+      { _id: id },
+      updateInstrumentoDto,
+    );
+    return resultado;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} instrumento`;
+  async remove(id: string) {
+    const resultado = await this.instModel.deleteOne({ _id: id });
+    return resultado;
+  }
+
+  async traerPorFrencuencia(frecuencia: number) {
+    console.log(typeof frecuencia, frecuencia);
+    const resultado = await this.instModel.find({
+      'sonidos.frecuencia': { $lte: frecuencia },
+    });
+
+    return resultado;
+  }
+
+  async buscarPartituras(nombre: string) {
+    throw new NotImplementedException();
+    // throw new HttpException('No lo supe hacer', HttpStatus.NOT_IMPLEMENTED);
+
+    const resultado = await this.instModel.find({
+      // partituras: { $includes: nombre },
+    });
+
+    return resultado;
   }
 }

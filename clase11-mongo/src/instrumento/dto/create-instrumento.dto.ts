@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import {
   IsArray,
   IsDefined,
@@ -5,8 +6,14 @@ import {
   IsObject,
   IsPositive,
   IsString,
-  ValidateNested,
 } from 'class-validator';
+
+export class Sonido {
+  @IsString()
+  nombre: string;
+  @IsNumber()
+  frecuencia: number;
+}
 
 export class CreateInstrumentoDto {
   @IsString()
@@ -22,10 +29,12 @@ export class CreateInstrumentoDto {
   @IsDefined()
   precio: number;
 
+  // https://github.com/typestack/class-validator?tab=readme-ov-file#validating-arrays
   @IsArray()
+  @IsString({ each: true }) // Cada elemento del objeto
   partituras: string[];
 
   @IsObject()
-  @ValidateNested()
-  sondios: { nombre: string; frecuencia: number };
+  @Type(() => Sonido) // Revisar la clase que viene, porque no anda como debería
+  sonidos: Sonido;
 }
