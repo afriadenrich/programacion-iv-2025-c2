@@ -1,8 +1,16 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { CredencialesDTO } from './dto/credencialesDto';
-import { sign } from 'jsonwebtoken';
+import {
+  JsonWebTokenError,
+  sign,
+  TokenExpiredError,
+  verify,
+} from 'jsonwebtoken';
 
 const CONTRASENA_SECRETA_DEL_SERVER =
   'ESTO DEBERÍA ESTAR EN UN ENV Y SER MUY LARGA Y MUY SEGURA';
@@ -11,9 +19,19 @@ const CONTRASENA_SECRETA_DEL_SERVER =
 export class AuthService {
   login(user: CredencialesDTO) {
     // Lee de la base de datos y confirma usuario válido y comprara contraseñas encriptadas.
+    return this.createToken(user.usuario);
+  }
 
-    const payload: any = {
-      user: user.usuario,
+  register(user: CredencialesDTO) {
+    // Valida usuario no existe y guarda
+    return this.createToken(user.usuario);
+  }
+
+  // Ejemplo devuelve en body, trae desde header
+
+  createToken(username: string) {
+    const payload: { user: string; admin: boolean } = {
+      user: username,
       admin: false,
     };
 
@@ -25,10 +43,37 @@ export class AuthService {
     return { token: token };
   }
 
-  register(user: CredencialesDTO) {
-    // Valida usuario no existe y guarda
-    const payload: any = {
-      user: user.usuario,
+  verificar(authHeader: string) {
+    console.log(authHeader); // Bearer token
+    if (!authHeader) throw new BadRequestException();
+
+    const [tipo, token] = authHeader.split(' ');
+
+    if (tipo !== 'Bearer') throw new BadRequestException();
+
+    try {
+      const tokenValidado = verify(token, CONTRASENA_SECRETA_DEL_SERVER);
+      return tokenValidado; // info de la payload
+    } catch (error) {
+      if (error instanceof TokenExpiredError) {
+        return 'Token expirado';
+      }
+      if (error instanceof JsonWebTokenError) {
+        return 'Firma falló o tóken modificado';
+      }
+
+      throw new InternalServerErrorException();
+    }
+  }
+
+  loginCookie(user: CredencialesDTO) {
+    return this.guardarEnCookie(user.usuario);
+  }
+
+  // Guarda en cookie, lee de cookie
+  guardarEnCookie(username: string) {
+    const payload: { user: string; admin: boolean } = {
+      user: username,
       admin: false,
     };
 
@@ -37,6 +82,22 @@ export class AuthService {
       expiresIn: '15m',
     });
 
-    return { token: token };
+    return token;
+  }
+
+  verificarDesdeCookie(token: string) {
+    try {
+      const tokenValidado = verify(token, CONTRASENA_SECRETA_DEL_SERVER);
+      return tokenValidado; // info de la payload
+    } catch (error) {
+      if (error instanceof TokenExpiredError) {
+        return 'Token expirado';
+      }
+      if (error instanceof JsonWebTokenError) {
+        return 'Firma falló o tóken modificado';
+      }
+
+      throw new InternalServerErrorException();
+    }
   }
 }

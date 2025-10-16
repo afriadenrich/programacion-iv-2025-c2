@@ -62,3 +62,4 @@ Este cuatrimestre utilizamos la versión: *19.2.5* de Angular
 
 ### Supabase Realtime - Guards
 
+https://excalidraw.com/#json=oUWmBwMfiUAKLffEsoy1I,5A1ZyFuDs0pIZ0GBaN2IDA
