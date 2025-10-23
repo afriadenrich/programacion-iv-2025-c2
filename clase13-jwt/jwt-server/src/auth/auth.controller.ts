@@ -38,7 +38,10 @@ export class AuthController {
   }
 
   @Post('login/cookie')
-  loginCookie(@Body() body: CredencialesDTO, @Res() response: Response) {
+  loginCookie(
+    @Body() body: CredencialesDTO,
+    @Res({ passthrough: true }) response: Response,
+  ) {
     const token: string = this.authService.loginCookie(body);
     response.cookie('token', token, {
       httpOnly: true,
@@ -64,7 +67,7 @@ export class AuthController {
 
   @UseGuards(JwtGuard)
   @Delete('/data/delete')
-  delete(@Req() request: any) {
+  delete() {
     // return this.authService.delete(request.user.id);
     return {};
   }

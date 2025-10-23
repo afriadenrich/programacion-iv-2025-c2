@@ -3,7 +3,7 @@ import {
   ExecutionContext,
   HttpException,
   Injectable,
-  InternalServerErrorException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import type { Request } from 'express';
@@ -36,11 +36,10 @@ export class JwtCookieGuard implements CanActivate {
         if (error instanceof JsonWebTokenError) {
           throw new HttpException('Firma falló o tóken modificado', 401);
         }
-
-        throw new InternalServerErrorException();
       }
     }
 
-    return false;
+    throw new UnauthorizedException();
+    // return false; // throw 403
   }
 }

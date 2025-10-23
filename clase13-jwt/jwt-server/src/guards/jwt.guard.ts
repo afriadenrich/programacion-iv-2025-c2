@@ -1,10 +1,9 @@
 import {
-  BadRequestException,
   CanActivate,
   ExecutionContext,
   HttpException,
   Injectable,
-  InternalServerErrorException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import type { Request } from 'express';
 import { JsonWebTokenError, TokenExpiredError, verify } from 'jsonwebtoken';
@@ -23,11 +22,11 @@ export class JwtGuard implements CanActivate {
 
     const authHeader: string | undefined = request.headers.authorization;
 
-    if (!authHeader) throw new BadRequestException();
+    if (!authHeader) throw new UnauthorizedException();
 
     const [tipo, token] = authHeader.split(' ');
 
-    if (tipo !== 'Bearer') throw new BadRequestException();
+    if (tipo !== 'Bearer') throw new UnauthorizedException();
 
     // Verificarlo
 
@@ -51,7 +50,7 @@ export class JwtGuard implements CanActivate {
         throw new HttpException('Firma falló o tóken modificado', 401);
       }
 
-      throw new InternalServerErrorException();
+      throw new UnauthorizedException();
     }
   }
 }
