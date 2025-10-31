@@ -1,5 +1,6 @@
 import {
   Body,
+  ConsoleLogger,
   Controller,
   Get,
   HttpStatus,
@@ -18,12 +19,16 @@ import {
   CacheInterceptor,
   CacheTTL,
 } from '@nestjs/cache-manager';
+import { LazyModuleLoader } from '@nestjs/core';
+import { MyLogger } from './logger/logger';
 
 @Controller()
 export class AppController {
   constructor(
     private readonly appService: AppService,
     @Inject(CACHE_MANAGER) private cacheManager: Cache,
+    private lazyModuleLoader: LazyModuleLoader,
+    private logger: ConsoleLogger,
   ) {}
 
   @Get()
@@ -118,5 +123,23 @@ export class AppController {
 
     await this.cacheManager.set('manual' + numero, numero);
     return numero;
+  }
+
+  @Get('/otro')
+  async otro() {
+    // import("./otro-module/otro-module.module.js").then((m) => m.OtroModuleModule);
+    this.logger.log('Arranca', 'Ejemplo');
+    const archivo = await import('./otro-module/otro-module.module.js');
+    const modulo = archivo.OtroModuleModule;
+
+    const moduloRef = await this.lazyModuleLoader.load(() => modulo);
+
+    const { OtroServiceService } = await import(
+      './otro-module/otro-service/otro-service.service.js'
+    );
+
+    const servicio = moduloRef.get(OtroServiceService);
+
+    return servicio.otro();
   }
 }

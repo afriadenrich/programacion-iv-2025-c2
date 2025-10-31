@@ -1,4 +1,4 @@
-import { NestFactory } from '@nestjs/core';
+import { LazyModuleLoader, NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 // import { ConsoleLogger } from '@nestjs/common';
 import { MyLogger } from './logger/logger';
@@ -18,8 +18,11 @@ async function bootstrap() {
     //   compact: true,
     //   timestamp: true,
     // }),
-    logger: new MyLogger(),
+    logger: new MyLogger({ timestamp: true }),
   });
+
+  // Lazy Loading Modules
+  // const lazyModuleLoader = app.get(LazyModuleLoader);
 
   await app.listen(process.env.PORT ?? 3000);
 }

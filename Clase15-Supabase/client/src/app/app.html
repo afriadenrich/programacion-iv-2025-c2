@@ -1,0 +1,12 @@
+<input type="file" (change)="onFileSelected($event)"><br>
+<button (click)="upload()">Subir archivo</button>
+<button (click)="uploadFromNest()">Subir archivo desde Nest</button>
+
+@if(this.urlFoto()){
+<img [src]="this.urlFoto()" alt="" style="width: 300px;">
+<p>{{this.urlFoto()}}</p>
+<button (click)="delete()">Eliminar archivo</button>
+<button (click)="deleteFromNest()">Eliminar desde nest</button>
+}
+
+<router-outlet />
