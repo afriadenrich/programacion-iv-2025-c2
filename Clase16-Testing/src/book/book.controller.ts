@@ -17,12 +17,17 @@ import { Book } from './schemas/book.schema';
 
 import { Query as ExpressQuery } from 'express-serve-static-core';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Libros')
 @Controller('books')
 export class BookController {
   constructor(private bookService: BookService) {}
 
   @Get()
+  @ApiResponse({ status: 200 })
+  @ApiResponse({ status: 400 })
+  @ApiResponse({ status: 500 })
   async getAllBooks(@Query() query: ExpressQuery): Promise<Book[]> {
     return this.bookService.findAll(query);
   }

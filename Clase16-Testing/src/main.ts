@@ -11,7 +11,6 @@ async function bootstrap() {
     .setTitle('Ejemplo Test')
     .setDescription('Clase de test')
     .setVersion('2.0')
-    .addTag('progra')
     .build();
 
   const documentFactory = () => SwaggerModule.createDocument(app, config);
