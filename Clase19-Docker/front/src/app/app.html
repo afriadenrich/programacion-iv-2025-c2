@@ -1,0 +1,9 @@
+<main>
+  <div>
+    @for (m of mensajes(); track $index) {
+    <p>{{ m }}</p>
+
+    }
+  </div>
+  <input [(ngModel)]="mensaje" /> <button (click)="enviar()">Enviar</button>
+</main>
